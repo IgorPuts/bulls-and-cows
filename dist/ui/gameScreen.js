@@ -20,8 +20,15 @@ export const renderGameScreen = (ctx) => {
     let state = ctx.state;
     const { secret, handlers } = ctx;
     const { length, base } = state.settings;
+    const newGameBtn = el('button', {
+        type: 'button',
+        className: 'game__new',
+        textContent: 'New game',
+    });
+    newGameBtn.addEventListener('click', handlers.onNewGame);
     const header = el('header', { className: 'game__header' }, [
         el('h2', { textContent: `Bulls and Cows (length ${length}, base ${base})` }),
+        newGameBtn,
     ]);
     const timer = el('output', { className: 'game__timer', textContent: '0:00' });
     const updateTimer = () => {
@@ -61,19 +68,12 @@ export const renderGameScreen = (ctx) => {
     };
     renderHistory(state.history);
     const status = el('div', { className: 'game__status' });
-    const actions = el('div', { className: 'game__actions' });
     const submitBtn = el('button', {
         type: 'button',
         className: 'game__submit',
         textContent: 'Check',
         id: 'check-btn',
     });
-    const newGameBtn = el('button', {
-        type: 'button',
-        className: 'game__new',
-        textContent: 'New game',
-    });
-    newGameBtn.addEventListener('click', handlers.onNewGame);
     const disableInputs = () => {
         submitBtn.disabled = true;
         input.disabled = true;
@@ -83,9 +83,6 @@ export const renderGameScreen = (ctx) => {
         const ms = getElapsedMs(wonState) ?? 0;
         status.textContent = `You won! Attempts: ${wonState.history.length}, time: ${formatMs(ms)}.`;
         disableInputs();
-        if (!actions.contains(newGameBtn)) {
-            actions.append(newGameBtn);
-        }
         handlers.onWin(wonState);
     };
     const submit = () => {
@@ -115,19 +112,17 @@ export const renderGameScreen = (ctx) => {
             submit();
         }
     });
-    actions.append(submitBtn);
+    const inputRow = el('div', { className: 'game__input-row' }, [input, submitBtn]);
     if (isWin(state)) {
         const ms = getElapsedMs(state) ?? 0;
         status.textContent = `You won! Attempts: ${state.history.length}, time: ${formatMs(ms)}.`;
         disableInputs();
-        actions.append(newGameBtn);
     }
     const container = el('section', { className: 'game' }, [
         header,
         timer,
         el('label', { htmlFor: 'guess-input', textContent: `Enter ${length} digits: ` }),
-        input,
-        actions,
+        inputRow,
         error,
         status,
         el('h3', { textContent: 'History' }),
