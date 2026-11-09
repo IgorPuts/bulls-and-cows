@@ -46,8 +46,16 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
   const { secret, handlers } = ctx;
   const { length, base } = state.settings;
 
+  const newGameBtn = el('button', {
+    type: 'button',
+    className: 'game__new',
+    textContent: 'New game',
+  });
+  newGameBtn.addEventListener('click', handlers.onNewGame);
+
   const header = el('header', { className: 'game__header' }, [
     el('h2', { textContent: `Bulls and Cows (length ${length}, base ${base})` }),
+    newGameBtn,
   ]);
 
   const timer = el('output', { className: 'game__timer', textContent: '0:00' });
@@ -96,21 +104,12 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
 
   const status = el('div', { className: 'game__status' });
 
-  const actions = el('div', { className: 'game__actions' });
-
   const submitBtn = el('button', {
     type: 'button',
     className: 'game__submit',
     textContent: 'Check',
     id: 'check-btn',
   });
-
-  const newGameBtn = el('button', {
-    type: 'button',
-    className: 'game__new',
-    textContent: 'New game',
-  });
-  newGameBtn.addEventListener('click', handlers.onNewGame);
 
   const disableInputs = (): void => {
     submitBtn.disabled = true;
@@ -122,9 +121,6 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
     const ms = getElapsedMs(wonState) ?? 0;
     status.textContent = `You won! Attempts: ${wonState.history.length}, time: ${formatMs(ms)}.`;
     disableInputs();
-    if (!actions.contains(newGameBtn)) {
-      actions.append(newGameBtn);
-    }
     handlers.onWin(wonState);
   };
 
@@ -168,7 +164,6 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
     const ms = getElapsedMs(state) ?? 0;
     status.textContent = `You won! Attempts: ${state.history.length}, time: ${formatMs(ms)}.`;
     disableInputs();
-    actions.append(newGameBtn);
   }
 
   const container = el('section', { className: 'game' }, [
@@ -178,7 +173,6 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
     inputRow,
     error,
     status,
-    actions,
     el('h3', { textContent: 'History' }),
     historyList,
   ]);
