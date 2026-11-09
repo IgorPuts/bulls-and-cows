@@ -1,0 +1,247 @@
+:root {
+  --bg-color: #f4f4f9;
+  --panel-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border: #e5e7eb;
+  --success: #10b981;
+  --error: #ef4444;
+  --radius: 16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+#app {
+  width: 100%;
+  max-width: 600px;
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px;
+  border: 1px solid var(--border);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+select,
+input[type='text'] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  color: var(--text-main);
+  transition: border-color 0.2s;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+select:focus,
+input[type='text']:focus {
+  border-color: var(--accent);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Game Screen Specifics */
+.game__header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.game__timer {
+  display: block;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.game__error {
+  color: var(--error);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  min-height: 20px;
+  text-align: center;
+}
+
+.game__status {
+  color: var(--success);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.game__history {
+  list-style: none;
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.game__history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--bg-color);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.game__guess {
+  font-weight: 700;
+}
+
+/* Settings Variants */
+.settings__variants {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Records Table */
+.records {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.records th,
+.records td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.records th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.records td {
+  font-size: 0.875rem;
+}
+
+.records tr:last-child td {
+  border-bottom: none;
+}
+
+.records__empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px !important;
+}
+
+.game__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.game__header h2 {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.game__new {
+  width: auto;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.game__new:hover {
+  background: var(--accent);
+  color: #fff;
+}
