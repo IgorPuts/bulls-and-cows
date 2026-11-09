@@ -162,7 +162,7 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
     }
   });
 
-  actions.append(submitBtn);
+  const inputRow = el('div', { className: 'game__input-row' }, [input, submitBtn]);
 
   if (isWin(state)) {
     const ms = getElapsedMs(state) ?? 0;
@@ -175,10 +175,10 @@ export const renderGameScreen = (ctx: GameScreenContext): HTMLElement => {
     header,
     timer,
     el('label', { htmlFor: 'guess-input', textContent: `Enter ${length} digits: ` }),
-    input,
-    actions,
+    inputRow,
     error,
     status,
+    actions,
     el('h3', { textContent: 'History' }),
     historyList,
   ]);
