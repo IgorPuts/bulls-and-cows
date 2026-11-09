@@ -5,7 +5,7 @@ import {
   serializeRecords,
   type GameRecord,
   type RecordSettings,
-} from './records';
+} from './records.js';
 
 const safeGetItem = (key: string): string | null => {
   try {

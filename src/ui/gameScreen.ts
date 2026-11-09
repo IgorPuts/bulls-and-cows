@@ -1,7 +1,13 @@
-import { evaluateGuess } from '../logic/evaluateGuess';
-import { isValidGuess } from '../logic/isValidGuess';
-import { addAttempt, getElapsedMs, isWin, type Attempt, type GameState } from '../state/gameState';
-import { sanitizeInput } from './inputFilter';
+import { evaluateGuess } from '../logic/evaluateGuess.js';
+import { isValidGuess } from '../logic/isValidGuess.js';
+import {
+  addAttempt,
+  getElapsedMs,
+  isWin,
+  type Attempt,
+  type GameState,
+} from '../state/gameState.js';
+import { sanitizeInput } from './inputFilter.js';
 
 export interface GameScreenHandlers {
   onStateChange: (state: GameState) => void;

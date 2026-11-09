@@ -1,11 +1,11 @@
-import { countPossibleSecrets } from '../logic/countPossibleSecrets';
+import { countPossibleSecrets } from '../logic/countPossibleSecrets.js';
 import {
   BASES,
   LENGTHS,
   availableLengths,
   isLengthAvailable,
   type BaseOption,
-} from './settingsLogic';
+} from './settingsLogic.js';
 
 export interface Settings {
   length: number;

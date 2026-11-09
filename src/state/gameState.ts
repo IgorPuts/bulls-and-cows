@@ -1,4 +1,4 @@
-import type { GuessResult } from '../logic/evaluateGuess';
+import type { GuessResult } from '../logic/evaluateGuess.js';
 
 export interface GameSettings {
   length: number;

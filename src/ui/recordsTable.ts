@@ -1,5 +1,5 @@
-import { loadRecords } from '../state/recordsStorage';
-import type { GameRecord, RecordSettings } from '../state/records';
+import { loadRecords } from '../state/recordsStorage.js';
+import type { GameRecord, RecordSettings } from '../state/records.js';
 
 const el = <K extends keyof HTMLElementTagNameMap>(
   tag: K,
